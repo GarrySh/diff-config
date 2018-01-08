@@ -1,10 +1,10 @@
 {
   "name": "gendiff-garrysh",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Second Hexlet`s project",
   "main": "dist/index.js",
   "bin": {
-    "index": "dist/bin/index.js"
+    "index": "dist/bin/gendiff.js"
   },
   "engines": {
     "node": "8"
@@ -33,7 +33,9 @@
     "jest": "^22.0.4",
     "jest-cli": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "commander": "^2.12.2"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/GarrySh/project-clear.git"
