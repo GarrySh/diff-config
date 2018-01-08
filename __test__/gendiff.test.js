@@ -1,5 +1,16 @@
+import gendiff from '../src';
+
 describe('simple data', () => {
-  test('test', () => {
-    expect(4 / 2).toBe(2);
+  const expected = `
+{
+    host: hexlet.io
+  + timeout: 20
+  - timeout: 50
+  - proxy: 123.234.53.22
+  + verbose: true
+}`;
+
+  test('diff JSON flat files ', () => {
+    expect(gendiff('__test__/__fixtures__/before.json', '__test__/__fixtures__/after.json')).toBe(expected);
   });
 });

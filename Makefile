@@ -13,6 +13,9 @@ lint:
 test:
 	npm test
 
+watch:
+	npm test -- --watch
+
 build:
 	rm -rf dist
 	npm run build
