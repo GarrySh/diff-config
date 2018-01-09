@@ -1,9 +1,12 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
+import yaml from 'js-yaml';
 
 const extensionTypes = {
   '.json': JSON.parse,
+  '.yaml': yaml.safeLoad,
+  '.yml': yaml.safeLoad,
 };
 
 const parseFile = (pathToFile) => {
