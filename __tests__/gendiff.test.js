@@ -17,4 +17,8 @@ describe('simple data', () => {
   test('diff YAML flat files ', () => {
     expect(gendiff('__tests__/__fixtures__/before.yaml', '__tests__/__fixtures__/after.yaml')).toBe(expected);
   });
+
+  test('diff INI flat files ', () => {
+    expect(gendiff('__tests__/__fixtures__/before.ini', '__tests__/__fixtures__/after.ini')).toBe(expected);
+  });
 });

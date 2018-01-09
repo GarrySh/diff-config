@@ -2,16 +2,20 @@ import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
+import ini from 'ini';
 
 const extensionTypes = {
   '.json': JSON.parse,
   '.yaml': yaml.safeLoad,
   '.yml': yaml.safeLoad,
+  '.ini': ini.parse,
 };
 
 const parseFile = (pathToFile) => {
   const fileExtension = path.extname(pathToFile);
+  // console.log(fileExtension);
   const parse = extensionTypes[fileExtension];
+  // console.log(ini);
   if (!parse) {
     throw new Error('unsupported file extension');
   }
