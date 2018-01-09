@@ -11,6 +11,6 @@ describe('simple data', () => {
 }`;
 
   test('diff JSON flat files ', () => {
-    expect(gendiff('__test__/__fixtures__/before.json', '__test__/__fixtures__/after.json')).toBe(expected);
+    expect(gendiff('__tests__/__fixtures__/before.json', '__tests__/__fixtures__/after.json')).toBe(expected);
   });
 });
