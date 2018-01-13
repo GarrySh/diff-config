@@ -4,9 +4,8 @@ import gendiff from '..';
 
 commander
   .description('Compares two configuration files and shows a difference.')
-  .version('0.5.2')
+  .version('0.6.0')
   .arguments('<firstConfig> <secondConfig>')
-  .option('-V, --version', 'output the version number')
   .option('-f, --format [type]', 'Output format')
   .action(gendiff)
   .parse(process.argv);

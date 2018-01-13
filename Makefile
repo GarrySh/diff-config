@@ -19,6 +19,7 @@ watch:
 build:
 	rm -rf dist
 	npm run build
+	chmod +x dist/bin/gendiff.js
 
 clear:
 	rm -rf dist
