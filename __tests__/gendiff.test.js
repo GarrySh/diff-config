@@ -1,13 +1,8 @@
+import fs from 'fs';
 import gendiff from '../src';
 
 describe('flat data', () => {
-  const expected = `{
-    host: hexlet.io
-  + timeout: 20
-  - timeout: 50
-  - proxy: 123.234.53.22
-  + verbose: true
-}`;
+  const expected = fs.readFileSync('__tests__/__fixtures__/result_flat.txt', 'utf8');
 
   test('diff JSON files ', () => {
     expect(gendiff('__tests__/__fixtures__/before_flat.json', '__tests__/__fixtures__/after_flat.json')).toBe(expected);
@@ -23,32 +18,7 @@ describe('flat data', () => {
 });
 
 describe('recursive data', () => {
-  const expected = `{
-    common: {
-        setting1: Value 1
-      - setting2: 200
-        setting3: true
-        setting6: {
-            key: value
-          + ops: vops
-        }
-      + setting4: blah blah
-      + setting5: {
-            key5: value5
-        }
-    }
-    group1: {
-      + baz: bars
-      - baz: bas
-        foo: bar
-    }
-  - group2: {
-        abc: 12345
-    }
-  + group3: {
-        fee: 100500
-    }
-}`;
+  const expected = fs.readFileSync('__tests__/__fixtures__/result.txt', 'utf8');
 
   test('diff JSON files ', () => {
     expect(gendiff('__tests__/__fixtures__/before.json', '__tests__/__fixtures__/after.json')).toBe(expected);
