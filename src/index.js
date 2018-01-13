@@ -46,15 +46,14 @@ const getAst = (fileBefore, fileAfter) => {
   });
 };
 
-const gendiff = (pathToCfgBefore, pathToCfgAfter, output) => {
+const gendiff = (pathToCfgBefore, pathToCfgAfter, outputFormat) => {
   const fileBefore = fs.readFileSync(pathToCfgBefore, 'utf8');
   const fileAfter = fs.readFileSync(pathToCfgAfter, 'utf8');
   const parsedFileBefore = parseFile(fileBefore, path.extname(pathToCfgBefore));
   const parsedFileAfter = parseFile(fileAfter, path.extname(pathToCfgAfter));
   const ast = getAst(parsedFileBefore, parsedFileAfter);
-  const outputFormat = !output ? 'text' : output.format;
-  const renderer = getRenderer(outputFormat);
-  return renderer(ast);
+  const render = getRenderer(outputFormat);
+  return render(ast);
 };
 
 export default gendiff;

@@ -1,6 +1,6 @@
 {
   "name": "gendiff-garrysh",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Second Hexlet`s project",
   "main": "dist/index.js",
   "bin": {
