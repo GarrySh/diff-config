@@ -11,7 +11,7 @@ const rendererTypes = {
 const getRenderer = (outputFormat) => {
   const render = rendererTypes[outputFormat];
   if (!render) {
-    throw new Error( 'unsupported output format');
+    throw new Error('unsupported output format');
   }
   return render;
 };
