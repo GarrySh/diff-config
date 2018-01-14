@@ -32,3 +32,19 @@ describe('recursive data', () => {
     expect(gendiff('__tests__/__fixtures__/before.ini', '__tests__/__fixtures__/after.ini', 'text')).toBe(expected);
   });
 });
+
+describe('recursive data parsed in plain format ', () => {
+  const expected = fs.readFileSync('__tests__/__fixtures__/result_plain.txt', 'utf8');
+
+  test('diff JSON files ', () => {
+    expect(gendiff('__tests__/__fixtures__/before.json', '__tests__/__fixtures__/after.json', 'plain')).toBe(expected);
+  });
+
+  test('diff YML files ', () => {
+    expect(gendiff('__tests__/__fixtures__/before.yml', '__tests__/__fixtures__/after.yml', 'plain')).toBe(expected);
+  });
+
+  test('diff INI files ', () => {
+    expect(gendiff('__tests__/__fixtures__/before.ini', '__tests__/__fixtures__/after.ini', 'plain')).toBe(expected);
+  });
+});

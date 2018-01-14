@@ -1,9 +1,9 @@
-import rendererText from './rendererText';
-import rendererPlain from './rendererPlain';
+import renderText from './rendererText';
+import renderPlain from './rendererPlain';
 
 const rendererTypes = {
-  text: rendererText,
-  plain: rendererPlain,
+  text: renderText,
+  plain: renderPlain,
 };
 
 const getRenderer = (outputFormat) => {
