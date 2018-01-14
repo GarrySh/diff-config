@@ -8,22 +8,22 @@ const propertyCompare = [
   {
     type: 'nested',
     check: (before, after) => _.isObject(before) && _.isObject(after),
-    process: (before, after, func) => func(before, after),
+    process: (before, after, func) => ({ children: func(before, after) }),
   },
   {
     type: 'added',
     check: before => _.isUndefined(before),
-    process: (before, after) => _.identity(after),
+    process: (before, after) => ({ after }),
   },
   {
     type: 'deleted',
     check: (before, after) => _.isUndefined(after),
-    process: before => _.identity(before),
+    process: before => ({ before }),
   },
   {
     type: 'unchanged',
     check: (before, after) => before === after,
-    process: before => _.identity(before),
+    process: before => ({ before }),
   },
   {
     type: 'changed',
@@ -41,8 +41,9 @@ const getAst = (fileBefore, fileAfter) => {
     const valueBefore = fileBefore[key];
     const valueAfter = fileAfter[key];
     const { type, process } = getPropertyOfCompare(valueBefore, valueAfter);
-    const value = process(valueBefore, valueAfter, getAst);
-    return { key, value, type };
+    const node = { key, type, before: '', after: '', children: [] };
+    const nodeProperty = process(valueBefore, valueAfter, getAst);
+    return { ...node, ...nodeProperty };
   });
 };
 

@@ -13,19 +13,19 @@ const renderString = (key, value, compareResult, nestingLevel) => {
 };
 
 const rendererTypes = {
-  added: (nestingLevel, key, value) => renderString(key, value, '+', nestingLevel),
-  deleted: (nestingLevel, key, value) => renderString(key, value, '-', nestingLevel),
-  unchanged: (nestingLevel, key, value) => renderString(key, value, ' ', nestingLevel),
-  nested: (nestingLevel, key, value, func) => renderString(key, func(value, nestingLevel + 1), ' ', nestingLevel),
-  changed: (nestingLevel, key, value) => [renderString(key, value.after, '+', nestingLevel),
-    renderString(key, value.before, '-', nestingLevel)].join('\n'),
+  added: (nestingLevel, key, before, after) => renderString(key, after, '+', nestingLevel),
+  deleted: (nestingLevel, key, before) => renderString(key, before, '-', nestingLevel),
+  unchanged: (nestingLevel, key, before) => renderString(key, before, ' ', nestingLevel),
+  nested: (nestingLevel, key, before, after, children, func) => renderString(key, func(children, nestingLevel + 1), ' ', nestingLevel),
+  changed: (nestingLevel, key, before, after) => [renderString(key, after, '+', nestingLevel),
+    renderString(key, before, '-', nestingLevel)].join('\n'),
 };
 
 const renderText = (ast, nestingLevel = 0) => {
   const diff = ast.map((node) => {
-    const { key, value, type } = node;
+    const { key, type, before, after, children } = node;
     const action = rendererTypes[type];
-    return action(nestingLevel, key, value, renderText);
+    return action(nestingLevel, key, before, after, children, renderText);
   }).join('\n');
   return ['{', diff, `${indentShort(nestingLevel)}}`].join('\n');
 };
