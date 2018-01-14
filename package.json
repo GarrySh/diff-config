@@ -30,6 +30,7 @@
     "eslint-config-airbnb-base": "*",
     "eslint-plugin-import": "*",
     "eslint-plugin-jest": "*",
+    "istanbul": "^0.4.5",
     "jest": "^22.0.4",
     "jest-cli": "*"
   },
