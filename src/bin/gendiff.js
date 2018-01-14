@@ -4,12 +4,12 @@ import gendiff from '..';
 
 commander
   .description('Compares two configuration files and shows a difference.')
-  .version('0.6.1')
+  .version('0.7.0')
   .arguments('<firstConfig> <secondConfig>')
   .option('-f, --format [type]', 'Output format')
   .action((firstConfig, secondConfig, options) => {
     const outputFormat = options.format || 'text';
-    return console.log(gendiff(firstConfig, secondConfig, outputFormat));
+    console.log(gendiff(firstConfig, secondConfig, outputFormat));
   })
   .parse(process.argv);
 
