@@ -2,6 +2,6 @@ Property 'common.setting2' was removed
 Property 'common.setting6.ops' was added with value: 'vops'
 Property 'common.setting4' was added with value: 'blah blah'
 Property 'common.setting5' was added with complex value
-Property 'group1.baz' was updated. From 'bars' to 'bas'
+Property 'group1.baz' was updated. From value: 'bars' to value: 'bas'
 Property 'group2' was removed
 Property 'group3' was added with complex value

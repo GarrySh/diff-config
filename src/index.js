@@ -23,7 +23,7 @@ const propertyCompare = [
   {
     type: 'unchanged',
     check: (before, after) => before === after,
-    process: before => ({ before }),
+    process: (before, after) => ({ before, after }),
   },
   {
     type: 'changed',
